@@ -8,22 +8,27 @@ class QuizBrain:
         self.current_question = None
 
     def still_has_questions(self):
-        return self.question_number < len(self.question_list)
+        return self.question_number == len(self.question_list)
 
     def next_question(self):
         self.current_question = self.question_list[self.question_number]
         self.question_number += 1
-        user_answer = input(f"Q.{self.question_number}: {html.unescape(self.current_question.text)} (True/False): ")
-        # html.unescape is used to format html entities to human-readable txt.example: #039; = ' (single quotation)
-        self.check_answer(user_answer)
+        q_text = html.unescape(self.current_question.text)
+        return f"Q.{self.question_number}: {q_text} (True/False):"
+        # user_answer = input(f"Q.{self.question_number}: {q_text} (True/False): ")
+        # # html.unescape is used to format html entities to human-readable txt.example: #039; = ' (single quotation)
+        # self.check_answer(user_answer)
 
     def check_answer(self, user_answer):
         correct_answer = self.current_question.answer
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
-            print("You got it right!")
+            return self.score
         else:
-            print("That's wrong.")
-
-        print(f"Your current score is: {self.score}/{self.question_number}")
-        print("\n")
+            return self.score
+        #     print("You got it right!")
+        # else:
+        #     print("That's wrong.")
+        #
+        # print(f"Your current score is: {self.score}/{self.question_number}")
+        # print("\n")
