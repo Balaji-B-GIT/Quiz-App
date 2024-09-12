@@ -64,6 +64,8 @@ class QuizInterface:
             self.window.after(1000, func=self.get_new_question)
 
     def end_of_quiz(self):
+        self.true_button.config(state="disabled")
+        self.false_button.config(state="disabled")
         self.canvas.configure(bg = "white")
         self.canvas.itemconfig(self.question, text=f"You've completed the quiz\nYour final score was:\n"
                                                    f"            {self.score}/{self.quiz.question_number}")
