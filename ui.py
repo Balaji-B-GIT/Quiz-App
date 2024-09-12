@@ -12,9 +12,6 @@ class QuizInterface:
         self.window.title("Quizzler")
         self.window.config(bg=THEME_COLOR,pady=20,padx=20)
 
-        # self.counting = Label(text="",bg=THEME_COLOR,font = ("Arial",18,"bold"))
-        # self.counting.grid(row = 0,column = 0)
-
         self.score_label = Label(text=f"Score: {self.score}",pady=20,bg=THEME_COLOR,fg="White",font = ("Arial",18,"italic"))
         self.score_label.grid(row = 0 , column = 0,columnspan = 2)
 
